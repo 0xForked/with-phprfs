@@ -1,0 +1,6 @@
+vendor/
+.vscode/
+*.txt
+composer.lock
+.env
+phinx.yml

@@ -1,0 +1,35 @@
+paths:
+    migrations: '%%PHINX_CONFIG_DIR%%/database/migrations'
+    seeds: '%%PHINX_CONFIG_DIR%%/database/seeds'
+
+environments:
+    default_migration_table: migration_logs
+    default_database: slim_rest_skeleton
+    production:
+        adapter: mysql
+        host: 127.0.0.1
+        name: slim_rest_skeleton
+        user: root
+        pass: root
+        port: 3306
+        charset: utf8
+
+    development:
+        adapter: mysql
+        host: 127.0.0.1
+        name: slim_rest_skeleton
+        user: root
+        pass: root
+        port: 3306
+        charset: utf8
+
+    testing:
+        adapter: mysql
+        host: 127.0.0.1
+        name: slim_rest_skeleton
+        user: root
+        pass: root
+        port: 3306
+        charset: utf8
+
+version_order: creation
