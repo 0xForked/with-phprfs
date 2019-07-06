@@ -30,8 +30,7 @@
 |----------------------------------------------------
 */
     require __DIR__  . ('/Dependencies.php');
-    require __DIR__  . ('/RegistryController.php');
-    require __DIR__  . ('/RegistryMiddleware.php');
+    require __DIR__  . ('/Registries.php');
 
 /*
 |----------------------------------------------------
