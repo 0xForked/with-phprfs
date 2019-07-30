@@ -8,6 +8,16 @@ if (!function_exists('dd')) {
     }
 }
 
+if (!function_exists('dd_pre')) {
+    function dd_pre($string)
+    {
+        echo "<pre>";
+        var_dump($string);
+        echo "</pre>";
+        die();
+    }
+}
+
 if (!function_exists('dd_json')) {
     function dd_je($string)
     {

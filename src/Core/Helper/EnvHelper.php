@@ -3,7 +3,7 @@
 use Dotenv\Dotenv;
 
 if (file_exists(base_path() . '/.env')) {
-    $_dotenv = new Dotenv(base_path());
+    $_dotenv = Dotenv::create(base_path());
     $_dotenv->load();
     unset($_dotenv);
 }
@@ -36,5 +36,3 @@ if (!function_exists('env')) {
         return $value;
     }
 }
-
-

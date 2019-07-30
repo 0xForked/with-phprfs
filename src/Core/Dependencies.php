@@ -4,8 +4,6 @@ use Illuminate\Database\Capsule\Manager as Eloquent;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 use Monolog\Handler\StreamHandler;
-use App\Core\Helper\ImageHelper;
-
 
 /*
 |----------------------------------------------------
@@ -34,20 +32,36 @@ use App\Core\Helper\ImageHelper;
         $log_setting = $c->get('settings')['logger'];
         $logger = new Logger($log_setting['name']);
         $logger->pushProcessor(new UidProcessor());
-        $logger->pushHandler(new StreamHandler($log_setting['path'], Logger::DEBUG));
+        $logger->pushHandler(new StreamHandler($log_setting['path'], $log_setting['level']));
         return $logger;
     };
 
+
 /*
 |----------------------------------------------------
-|  Helper                                           |
+| Mailer                                            |
 |----------------------------------------------------
 */
-    $container['imageHelper'] = function ($container) {
-        return new ImageHelper;
+    $container['mailer'] = function ($container) {
+        $mailer = new PHPMailer();
+        //$mailer->SMTPDebug = 3;
+        $mailer->isSMTP();
+        $mailer->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        //$mailer->Host = 'tsl://smtp.gmail.com:587';
+        $mailer->Host = 'ssl://smtp.gmail.com:465';
+        $mailer->SMTPAuth = true;
+        $mailer->Username = env('MAIL_ADR', 'no-reply@fpslogic.com');
+        $mailer->Password = env('MAIL_PWD', 'password');
+        $mailer->setFrom('no-reply@fpslogic.com', 'fpslogic');
+        $mailer->isHtml(true);
+        return new \App\Core\Mailer\Mail($container->view, $mailer);
     };
-
-    $container['uploadDirectory'] = __DIR__ . '/../../public/assets/img/uploads/';
 
 
 /*
@@ -63,7 +77,7 @@ use App\Core\Helper\ImageHelper;
             return $response->withJson([
                 "code" => 404,
                 "message" => "Not Found",
-                "service" => "product"
+                "service" => "with-phprfs"
             ], 404);
         };
     };

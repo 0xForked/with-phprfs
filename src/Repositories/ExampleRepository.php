@@ -4,49 +4,33 @@ namespace App\Repositories;
 
 use App\Entity\Example;
 
-class ExampleRepository
+trait ExampleRepository
 {
 
     protected $example;
 
-	public function __construct(Example $example)
+	public function __construct()
 	{
-	    $this->example = $example;
+	    $this->example = new Example;
     }
 
-    public function all()
+    public function test()
     {
-
+        return "with-phprfs-{Controller-Repository-Model}-test";
     }
 
-    public function allPaginate()
-    {
+    public function all() { }
 
-    }
+    public function allPaginate() { }
 
-    public function find($id)
-    {
-        return $this->example->find($id);
-    }
+    public function find($id) { }
 
-    public function findBy(Array $key, Array $value )
-    {
+    public function findBy(Array $key, Array $value) { }
 
-    }
+    public function insert() { }
 
-    public function insert()
-    {
+    public function update() { }
 
-    }
-
-    public function update()
-    {
-
-    }
-
-    public function delete()
-    {
-
-    }
+    public function delete() { }
 
 }

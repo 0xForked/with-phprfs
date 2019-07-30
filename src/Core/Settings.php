@@ -17,7 +17,8 @@
             ],
 
             'logger' => [
-                'name' => 'product_service_log',
+                'name' => 'notify_service_log',
+                'level' => Monolog\Logger::DEBUG,
                 'path' => __DIR__ . ('/../../logs/app.log'),
             ],
 

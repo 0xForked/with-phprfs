@@ -1,7 +1,7 @@
 <?php
 
 if (!function_exists('snake_case')) {
-    function snakeCase($input)
+    function snake_case($input)
     {
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
         $ret = $matches[0];
@@ -13,7 +13,7 @@ if (!function_exists('snake_case')) {
 }
 
 if (!function_exists('dash_case')) {
-    function dashCase($input)
+    function dash_case($input)
     {
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
         $ret = $matches[0];
@@ -25,7 +25,7 @@ if (!function_exists('dash_case')) {
 }
 
 if (!function_exists('random_string')) {
-    function randomString($MaxSize = 32)
+    function random_string($MaxSize = 32)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
