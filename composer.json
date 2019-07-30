@@ -9,7 +9,6 @@
         "illuminate/database": "^5.5",
         "monolog/monolog": "^1.23",
         "vlucas/phpdotenv": "^3.3",
-		"morrislaptop/firestore-php": "^2.2"
     },
     "autoload": {
         "psr-4": {
